@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
+    <BackgroundImage />
     <Claim />
-    <SearchInput />
+    <SearchInput v-model="searchValue" @input="handleInput"/>
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 import Claim from '@/components/Claim.vue';
 import SearchInput from '@/components/SearchInput.vue';
+import BackgroundImage from '@/components/BackgroundImage.vue';
 const API = 'https://images-api.nasa.gov';
 
 export default {
@@ -35,24 +37,21 @@ export default {
   components: {
     Claim,
     SearchInput,
+    BackgroundImage,
   },
 };
 </script>
 
 <style lang="scss" scoped>
   .wrapper {
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0;
     padding: 30px;
-    height: 100vh;
-    width: 100%;
-    background-image: url('../assets/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: 30% 0%;
   }
 </style>
 
